@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace OlmedoHelloWorld
 {
+    //Class: Program
+    //Author: Dennis Olmedo
+    //Purpose: Try out C# with basic variable assignment and display on console
+    //Restrictions: None
     class Program
     {
         static void Main(string[] args)
