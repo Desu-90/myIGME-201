@@ -10,7 +10,7 @@ namespace OlmedoHelloWorld
     //Author: Dennis Olmedo
     //Purpose: Try out C# with basic variable assignment and display on console
     //Restrictions: None
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
