@@ -23,7 +23,7 @@ namespace OlmedoSquashBugs
             //int i = 0
 
             // loop through the numbers 1 through 10
-            for (int i = 1; i < 10; ++i)
+            for (int i = 1; i < 11; ++i)
             {
                 // declare string to hold all numbers
                 string allNumbers = null;
