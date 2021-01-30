@@ -12,6 +12,10 @@ namespace OlmedoHelloWorld
     //Restrictions: None
     static class Program
     {
+        //Method: Main
+        //Purpose: Declare variables to then print out to the console. Has a for
+            //loop that uses a math function to subtract each time it goes through it
+        //Restrictions: None
         static void Main(string[] args)
         {
             //declare variables as needed

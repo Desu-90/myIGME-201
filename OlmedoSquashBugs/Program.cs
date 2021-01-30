@@ -35,13 +35,23 @@ namespace OlmedoSquashBugs
                 // output the calculation based on the numbers
                 //Console.WriteLine(i / (i - 1));
 
+                try
+                {
+                    Console.WriteLine(i / (i - 1));
+                }
+                catch (DivideByZeroException)
+                {
+                    Console.WriteLine("Division by zero.");
+                
+                }
+                
                 // concatenate each number to allNumbers
                 allNumbers += i + " ";
 
                 // increment the counter
                 //i = i + 1;
 
-                Console.WriteLine("These numbers have been processed" + allNumbers);
+                Console.WriteLine("These numbers have been processed " + allNumbers);
             }
 
             // output all numbers which have been processed
