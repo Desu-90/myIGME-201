@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace PE4
 {
+    // Class Program
+    // Author: Dennis Olmedo
+    // Purpose: 
+    // Restrictions: None
     static class Program
     {
         static void Main(string[] args)
