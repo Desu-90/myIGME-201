@@ -32,17 +32,19 @@ namespace PE5_Olmedo
                 //Prompt user for input
                 Console.Write("Turn #" + (i) + ": ");
                 input = Convert.ToInt32(Console.ReadLine());
-
+                //If the input is lower than the answer, tell the user it is
                 if (input < randomNumber)
                 {
                     Console.WriteLine("Go a little higher!");
                 }
+                //If the input is the right answer, let the user know and break out of loop
                 else if (input == randomNumber)
                 {                  
                         Console.WriteLine("Wohoo you got it right! Took ya " + (i) + " turns");
                         break;                    
                     
-                }               
+                }          
+                //If the input is greater than the answer, let the user know it is
                 else
                 {
                     Console.WriteLine("Woah there! Go down more");
