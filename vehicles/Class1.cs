@@ -21,7 +21,7 @@ namespace vehicles
     }
     public interface IPassengerCarrier
     {
-        LoadPassenger();
+        void LoadPassenger();
     }
     public interface IHeavyLoadCarrier
     {
