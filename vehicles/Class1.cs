@@ -21,6 +21,7 @@ namespace vehicles
     }
     public interface IPassengerCarrier
     {
+        LoadPassenger();
     }
     public interface IHeavyLoadCarrier
     {
@@ -38,6 +39,9 @@ namespace vehicles
     {
     }
     public class FreightTrain : Train, IHeavyLoadCarrier
+    {
+    }
+    public class _424DoubleBogey : Train, IHeavyLoadCarrier
     {
     }
 }
