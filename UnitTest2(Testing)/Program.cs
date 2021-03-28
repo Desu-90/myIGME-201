@@ -6,208 +6,212 @@ using System.Threading.Tasks;
 
 namespace UnitTest2_Testing_
 {
-    public abstract class Phone
+    public class Program
     {
-        private string phoneNumber;
-        public string address;
-
-        public string PhoneNumber;
-        public abstract void Connect();
-
-        public abstract void Disconnect();
-
         static void Main(string[] args)
         {
-            Tardis Tard1 = new Tardis();
-            Console.WriteLine(Tard1.WhichDrWho);
+            Tardis tardis = new Tardis();
+            PhoneBooth booth = new PhoneBooth();
+            
         }
     }
 
-    public interface PhoneInterFace
-    {
-        void Answer();
-        void MakeCall();
-        void HangUp();
-    }
-    public class RotaryPhone : Phone, PhoneInterFace
-    {
-        public void Answer()
+        public abstract class Phone
         {
+            private string phoneNumber;
+            public string address;
+
+            public string PhoneNumber;
+            public abstract void Connect();
+
+            public abstract void Disconnect();
         }
 
-        public void MakeCall()
+        public interface PhoneInterFace
         {
+            void Answer();
+            void MakeCall();
+            void HangUp();
         }
-
-        public void HangUp()
+        public class RotaryPhone : Phone, PhoneInterFace
         {
-        }
-
-        public override void Connect()
-        {
-        }
-        public override void Disconnect()
-        {
-        }
-    }
-
-    public class PushButtonPhone : Phone, PhoneInterFace
-    {
-        public void Answer()
-        {
-        }
-
-        public void MakeCall()
-        {
-        }
-
-        public void HangUp()
-        {
-        }
-
-        public override void Connect()
-        {
-        }
-        public override void Disconnect()
-        {
-        }
-    }
-
-    public class Tardis : RotaryPhone
-    {
-        private bool sonicScrewdriver;
-        private byte whichDrWho;
-        private string femaleSideKick;
-        public double exteriorSurfaceArea;
-        public double interiorVolume;
-
-        public byte WhichDrWho
-        {
-            get;
-        }
-        public string FemaleSideKick
-        {
-            get;
-        }
-
-        public void TimeTravel()
-        {
-        }
-        public static bool operator >(Tardis dr1, Tardis dr2)
-        {
-            bool returnVal = (dr1.whichDrWho > dr2.whichDrWho);
-
-            if (dr1.whichDrWho == 10)
+            public void Answer()
             {
-                returnVal = true;
             }
 
-            else if (dr2.whichDrWho == 10)
+            public void MakeCall()
             {
-                returnVal = false;
             }
 
-            else
+            public void HangUp()
             {
+            }
+
+            public override void Connect()
+            {
+            }
+            public override void Disconnect()
+            {
+            }
+        }
+
+        public class PushButtonPhone : Phone, PhoneInterFace
+        {
+            public void Answer()
+            {
+            }
+
+            public void MakeCall()
+            {
+            }
+
+            public void HangUp()
+            {
+            }
+
+            public override void Connect()
+            {
+            }
+            public override void Disconnect()
+            {
+            }
+        }
+
+        public class Tardis : RotaryPhone
+        {
+            private bool sonicScrewdriver;
+            private byte whichDrWho;
+            private string femaleSideKick;
+            public double exteriorSurfaceArea;
+            public double interiorVolume;
+
+            public byte WhichDrWho
+            {
+                get;
+            }
+            public string FemaleSideKick
+            {
+                get;
+            }
+
+            public void TimeTravel()
+            {
+            }
+            public static bool operator >(Tardis dr1, Tardis dr2)
+            {
+                bool returnVal = (dr1.whichDrWho > dr2.whichDrWho);
+
+                if (dr1.whichDrWho == 10)
+                {
+                    returnVal = true;
+                }
+
+                else if (dr2.whichDrWho == 10)
+                {
+                    returnVal = false;
+                }
+
+                else
+                {
+                    return returnVal;
+                }
                 return returnVal;
             }
-            return returnVal;
-        }
-        public static bool operator <(Tardis dr1, Tardis dr2)
-        {
-            bool returnVal = (dr1.whichDrWho < dr2.whichDrWho);
-
-            if (dr1.whichDrWho == 10)
+            public static bool operator <(Tardis dr1, Tardis dr2)
             {
-                returnVal = false;
-            }
+                bool returnVal = (dr1.whichDrWho < dr2.whichDrWho);
 
-            else if (dr2.whichDrWho == 10)
-            {
-                returnVal = true;
-            }
+                if (dr1.whichDrWho == 10)
+                {
+                    returnVal = false;
+                }
 
-            else
-            {
+                else if (dr2.whichDrWho == 10)
+                {
+                    returnVal = true;
+                }
+
+                else
+                {
+                    return returnVal;
+                }
+
                 return returnVal;
             }
-
-            return returnVal;
-        }
-        public static bool operator >=(Tardis dr1, Tardis dr2)
-        {
-            bool returnVal = (dr1.whichDrWho >= dr2.whichDrWho);
-
-            if (dr1.whichDrWho == 10)
+            public static bool operator >=(Tardis dr1, Tardis dr2)
             {
-                returnVal = true;
-            }
+                bool returnVal = (dr1.whichDrWho >= dr2.whichDrWho);
 
-            else if (dr2.whichDrWho == 10)
-            {
-                returnVal = false;
-            }
+                if (dr1.whichDrWho == 10)
+                {
+                    returnVal = true;
+                }
 
-            else
-            {
+                else if (dr2.whichDrWho == 10)
+                {
+                    returnVal = false;
+                }
+
+                else
+                {
+                    return returnVal;
+                }
                 return returnVal;
             }
-            return returnVal;
-        }
-        public static bool operator <=(Tardis dr1, Tardis dr2)
-        {
-            bool returnVal = (dr1.whichDrWho <= dr2.whichDrWho);
-
-            if (dr1.whichDrWho == 10)
+            public static bool operator <=(Tardis dr1, Tardis dr2)
             {
-                returnVal = false;
-            }
+                bool returnVal = (dr1.whichDrWho <= dr2.whichDrWho);
 
-            else if (dr2.whichDrWho == 10)
-            {
-                returnVal = true;
-            }
+                if (dr1.whichDrWho == 10)
+                {
+                    returnVal = false;
+                }
 
-            else
-            {
+                else if (dr2.whichDrWho == 10)
+                {
+                    returnVal = true;
+                }
+
+                else
+                {
+                    return returnVal;
+                }
+
                 return returnVal;
             }
+            public static bool operator ==(Tardis dr1, Tardis dr2)
+            {
+                return (dr1.whichDrWho == dr2.whichDrWho);
+            }
+            public static bool operator !=(Tardis dr1, Tardis dr2)
+            {
+                return !(dr1.whichDrWho == dr2.whichDrWho);
+            }
 
-            return returnVal;
-        }
-        public static bool operator ==(Tardis dr1, Tardis dr2)
-        {
-            return (dr1.whichDrWho == dr2.whichDrWho);
-        }
-        public static bool operator !=(Tardis dr1, Tardis dr2)
-        {
-            return !(dr1.whichDrWho == dr2.whichDrWho);
+            public override bool Equals(object obj)
+            {
+                return base.Equals(obj);
+            }
+            public override int GetHashCode()
+            {
+                return whichDrWho;
+            }
         }
 
-        public override bool Equals(object obj)
+
+        public class PhoneBooth : PushButtonPhone
         {
-            return base.Equals(obj);
+            private bool superMan;
+            public double costPerCall;
+            public bool phoneBook;
+
+            public void OpenDoor()
+            {
+            }
+            public void CloseDoor()
+            {
+            }
         }
-        public override int GetHashCode()
-        {
-            return whichDrWho;
-        }
+
+
     }
-
-
-    public class PhoneBooth : PushButtonPhone
-    {
-        private bool superMan;
-        public double costPerCall;
-        public bool phoneBook;
-
-        public void OpenDoor()
-        {
-        }
-        public void CloseDoor()
-        {
-        }
-    }
-
-    
-}
