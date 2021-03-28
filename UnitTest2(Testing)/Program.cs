@@ -8,13 +8,26 @@ namespace UnitTest2_Testing_
 {
     public class Program
     {
-        static void Main(string[] args)
+        static void UsePhone(object obj)
         {
             Tardis tardis = new Tardis();
             PhoneBooth booth = new PhoneBooth();
+            tardis.MakeCall();
+            tardis.HangUp();
+            booth.MakeCall();
+            booth.HangUp();
+            if(obj is PhoneBooth)
+            {
+                booth.OpenDoor();
+            }
+            else if(obj is Tardis)
+            {
+                tardis.TimeTravel();
+            }
             
         }
     }
+
 
         public abstract class Phone
         {
@@ -25,6 +38,7 @@ namespace UnitTest2_Testing_
             public abstract void Connect();
 
             public abstract void Disconnect();
+
         }
 
         public interface PhoneInterFace
