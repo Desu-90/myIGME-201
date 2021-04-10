@@ -23,19 +23,19 @@ namespace UT2_10
 
         public interface Play
         {
-            public void Play();
+            void Play();
         }
 
         public interface Quit
         {
-            public void Quit();
+            void Quit();
         }
 
         public class Tetris : VideoGames, Play, Quit
         {
             public bool inserted;
 
-            public void GamePlay()
+            public override void Gameplay()
             {
 
             }
@@ -58,7 +58,10 @@ namespace UT2_10
         {
             public bool inserted;
 
-
+            public override void Gameplay()
+            {
+                
+            }
             public override void Settings()
             {
 
@@ -76,6 +79,25 @@ namespace UT2_10
 
         static void Main(string[] args)
         {
+            Tetris tetris = new Tetris();
+            Mario mario = new Mario();
+
+            MyMethod(tetris);
+            MyMethod(mario);
+        }
+
+        static void MyMethod(object obj)
+        {
+            if (obj is Mario)
+            {
+                Mario mario = (Mario)obj;
+                mario.Play();
+            }
+
+
+
+            Quit quit = (Quit)obj;
+            quit.Quit();
         }
     }
 }
