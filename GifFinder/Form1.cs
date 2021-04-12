@@ -16,7 +16,7 @@ namespace GifFinder
         public GifFinder()
         {
             InitializeComponent();
-            webBrowser1.ScriptErrorsSuppressed = true;
+            
             try
             {
                 // Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; WOW64; Trident / 7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; wbx 1.0.0)
@@ -34,8 +34,8 @@ namespace GifFinder
             searchForm = new SearchForm();
             timer1.Interval = 100;
             timer1.Tick += new EventHandler(Timer1__Tick);
-
-            webBrowser1.Navigate("https://people.rit.edu/dxsigm/gif-finder.html");
+            webBrowser1.ScriptErrorsSuppressed = true;
+            webBrowser1.Navigate("https://people.rit.edu/dxsigm/gif-finder.html ");
 
             this.tileToolStripMenuItem.Click += new EventHandler(TileToolStripMenuItem__Click);
             this.cascadeToolStripMenuItem.Click += new EventHandler(CascadeToolStripMenuItem__Click);
@@ -63,7 +63,7 @@ namespace GifFinder
         {
             this.searchForm.ShowDialog();
 
-            if( searchForm.response == "Ok")
+            if( searchForm.response == "OK")
             {
                 HtmlElement htmlElement;
 
@@ -101,6 +101,11 @@ namespace GifFinder
             {
                 timer1.Start();
             }
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
         }
     }
 }
