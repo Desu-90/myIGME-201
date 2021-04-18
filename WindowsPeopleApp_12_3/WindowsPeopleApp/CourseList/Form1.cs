@@ -51,18 +51,13 @@ View: Details
 
 *************************************************************************/
 
-
 namespace CourseList
 {
     public partial class CourseListForm : Form
     {
-
-
         public CourseListForm()
         {
             InitializeComponent();
-
-            Globals.AddCoursesSampleData();
 
             // 2. Add courseListView ItemActivate Event Handler with CourseListView__ItemActivate
             // (this is the Event Handler for the mouse double-click on a row of the ListView)
@@ -106,7 +101,6 @@ namespace CourseList
             // redraws the ListView based on the current contents of courses
             // and whether to start the current page of courses with firstCourseCode
             // passed in as a parameter
-            
             ListViewItem lvi = null;
             ListViewItem.ListViewSubItem lvsi = null;
             ListViewItem firstLVI = null;
@@ -114,12 +108,11 @@ namespace CourseList
             int nStartEl = 0;
 
             // 10. if a firstCourseCode to display at top of the list was passed in
-            if(firstCourseCode != null)
+            if (firstCourseCode != null)
             {
                 // 11. fetch the index of firstCourseCode from the Globals.courses.sortedList
                 // using the IndexOfKey method
                 nStartEl = Globals.courses.sortedList.IndexOfKey(firstCourseCode);
-                
             }
 
             // 12. clear the listview items
@@ -131,15 +124,16 @@ namespace CourseList
             int lviCntr = 0;
 
             // 14. loop through all courses in Globals.courses.sortedList and insert them in the ListView
-            foreach (KeyValuePair<string, CourseLib.Course> kvp in Globals.courses.sortedList)
+            foreach (KeyValuePair<string, Course> keyValuePair in Globals.courses.sortedList)
             {
                 Course thisCourse = null;
 
                 // 15. set thisCourse to the Value in the current keyValuePair
-                thisCourse = kvp.Value;
+                thisCourse = keyValuePair.Value;
 
                 // 16. create a new ListViewItem named lvi
                 lvi = new ListViewItem();
+
                 // 17. set the first column of this row to show thisCourse.courseCode
                 lvi.Text = thisCourse.courseCode;
 
@@ -166,6 +160,7 @@ namespace CourseList
                 // 21. add lvsi to lvi.SubItems
                 lvi.SubItems.Add(lvsi);
 
+
                 // 22. create a new ListViewItem.ListViewSubItem named lvsi for the next column
                 lvsi = new ListViewItem.ListViewSubItem();
 
@@ -185,6 +180,7 @@ namespace CourseList
 
                 // 27. add lvsi to lvi.SubItems
                 lvi.SubItems.Add(lvsi);
+
 
                 // 28. create a new ListViewItem.ListViewSubItem named lvsi for the next column
                 lvsi = new ListViewItem.ListViewSubItem();
@@ -211,7 +207,7 @@ namespace CourseList
                 }
 
                 // 35. lvi is all filled in for all columns for this row so add it to courseListView.Items
-                courseListView.Items.Add(lvi);
+                this.courseListView.Items.Add(lvi);
 
                 // 36. increment our counter to alternate colors and check for nStartEl
                 ++lviCntr;
@@ -219,10 +215,10 @@ namespace CourseList
 
 
             // 37. unlock the ListView since we are done updating the contents
-            courseListView.EndUpdate();
+            this.courseListView.EndUpdate();
 
             // 38. set courseListView.TopItem to be firstLVI
-            courseListView.TopItem = firstLVI;
+            this.courseListView.TopItem = firstLVI;
         }
 
 
@@ -299,7 +295,6 @@ namespace CourseList
                         // 54. set courseDescriptionTextBox to hold the description
                         this.courseDescriptionTextBox.Text = course.description;
 
-
                         // 55. set the reviewRichTextBox to hold the review
                         this.reviewRichTextBox.Text = course.review;
 
@@ -363,21 +358,21 @@ namespace CourseList
         private void UpdateButton__Click(object sender, EventArgs e)
         {
             /// if the Update Button is pressed we need to 
-            ///    1. fetch the selected Course object
-            ///    2. Do a Deep Copy (Clone) of the Course object to fetch all original data into a new object
-            ///    3. remove the selected Course object from courses
-            ///    4. copy the text from the controls into the copied Course object
-            ///    5. remove an existing Course from courses which has the updated courseCode, 
-            ///       since the user may have edited it to be an existing courseCode
+            /// 1. fetch the selected Course object
+            /// 2. Do a Deep Copy (Clone) of the Course object to fetch all original data into a new object
+            /// 3. remove the selected Course object from courses
+            /// 4. copy the text from the controls into the copied Course object
+            /// 5. remove an existing Course from courses which has the updated courseCode, 
+            ///    since the user may have edited it to be an existing courseCode
 
 
             Course origCourse = null;
             Course copyCourse = null;
 
-            // get the original courseCode from the selected course in the courseListView
+            // get the courseCode from the selected course
             string origCourseCode = this.courseListView.SelectedItems[0].Text;
 
-            // fetch the original Course object
+            // fetch the selected Course object
             origCourse = Globals.courses[origCourseCode];
 
             // if it's a valid object
@@ -386,17 +381,17 @@ namespace CourseList
                 // do a Deep Copy of the original course object into a new object using the Clone() method
                 copyCourse = (Course)origCourse.Clone();
 
-                // remove the original Course from courses
+                // remove the selected Course from courses
                 Globals.courses.Remove(origCourseCode);
             }
 
-            // 66. copy courseCodeTextBox into our cloned object copyCourse
+            // copy courseCodeTextBox into our cloned object
             copyCourse.courseCode = this.courseCodeTextBox.Text;
 
-            // 67. copy courseDescriptionTextBox into our cloned object copyCourse
+            // copy courseDescriptionTextBox into our cloned object
             copyCourse.description = this.courseDescriptionTextBox.Text;
 
-            // 68. copy reviewRichTextBox into our cloned object copyCourse
+            // copy reviewRichTextBox into our cloned object
             copyCourse.review = this.reviewRichTextBox.Text;
 
             // remove the updated courseCode from courses
@@ -405,36 +400,31 @@ namespace CourseList
             // insert the updated course into courses
             Globals.courses[copyCourse.courseCode] = copyCourse;
 
-            // 69. enable the courseListView
+            // enable the courseListView
             this.courseListView.Enabled = true;
 
             // set the focus to the courseListView
             this.courseListView.Focus();
 
-            // 70. disable courseCodeTextBox
+            // disable courseCodeTextBox
             this.courseCodeTextBox.Enabled = false;
 
-            // 71. disable courseDescriptionTextBox
+            // disable courseDescriptionTextBox
             this.courseDescriptionTextBox.Enabled = false;
 
-            // 72. disable reviewRichTextBox
+            // disable reviewRichTextBox
             this.reviewRichTextBox.Enabled = false;
 
-            // 73. disable updateButton
+            // disable updateButton
             this.updateButton.Enabled = false;
 
-            // 74. call PaintListView with the courseCode that should be shown at the top of the list
-            PaintListView(copyCourse.courseCode);
+            // call PaintListView with the courseCode that should be shown at the top of the list
+            this.PaintListView(copyCourse.courseCode);
         }
 
         private void ExitButton__Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void codeHdr_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
