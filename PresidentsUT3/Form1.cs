@@ -15,8 +15,14 @@ namespace PresidentsUT3
         public Form1()
         {
             InitializeComponent();
+
+            this.exitButton.Click += new EventHandler(ExitButton__Click);
         }
 
+        private void ExitButton__Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
 
     }
 }
